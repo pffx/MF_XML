@@ -1,0 +1,15 @@
+insert SFP into cage 1.
+MF power-on with factory DB, VPLS 4093 is the default OAM vpls.
+VPLS 4093 has 2 saps, sap lag-1 (nt-a 1/1/c1/1 and nt-b 1/3/c1/1) via tag 4093 and sap lag-2 (nt-a OOB and nt-b OOB) via untag.  only nt-a optics port 1 with untag factory configuration
+AC detect SFP model and configure port speed. -- Ready?
+Port 1 link up, modify port 1 vlan from 4093 to untag. -- configuration-1 need to provide xml to AC  
+MF send DHCP request via port 1.    
+MF obtained OAM ip address from DHCP server, using this IP address to connect Auto_Run Server.
+Auto_Run Server push a new IP address with vlan 3095 to AC.
+AC recevie the new IP address, and then push it to MF by RPC. -- configuration-2 need to provide xml to AC mini configure
+MF commit new configuration (configration-2) with timeout 5 mins.
+If new IP address can be accessed, commit new configuration.
+Or rollback to configuration-1. 
+
+
+
