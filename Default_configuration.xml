@@ -38,16 +38,6 @@
                 </mda>
             </card>
             <lag>
-                <lag-index>1</lag-index>
-                <admin-state>enable</admin-state>
-                <port>
-                    <port-id>1/1/c1/1</port-id>
-                </port>
-                <port>
-                    <port-id>1/3/c1/1</port-id>
-                </port>
-            </lag>
-            <lag>
                 <lag-index>2</lag-index>
                 <admin-state>enable</admin-state>
                 <sub-group-switch-detect-time>30</sub-group-switch-detect-time>
@@ -132,36 +122,51 @@
                 <port-id>1/5/3</port-id>
                 <admin-state>enable</admin-state>
             </port>
+            <router>
+                <router-name>Base</router-name>
+                <static-routes>
+                    <route>
+                        <ip-prefix>::/0</ip-prefix>
+                        <route-type>unicast</route-type>
+                        <next-hop>
+                            <ip-address>fe80::21%OAM</ip-address>
+                        </next-hop>
+                    </route>
+                </static-routes>
+            </router>
             <service>
                 <ies>
                     <service-name>2</service-name>
                     <admin-state>enable</admin-state>
                     <customer>1</customer>
                     <interface>
-                        <interface-name>mgmt_ztp</interface-name>
+                        <interface-name>OAM</interface-name>
                         <admin-state>enable</admin-state>
                         <oamsave>true</oamsave>
                         <sap>
-                            <sap-id>1/5/1:4093</sap-id>
+                            <sap-id>1/5/1:3095</sap-id>
                             <admin-state>enable</admin-state>
                         </sap>
                         <ipv6>
+                            <link-local-address>
+                                <address>fe80::22</address>
+                            </link-local-address>
+                            <address>
+                                <ipv6-address>2003::100</ipv6-address>
+                                <prefix-length>64</prefix-length>
+                            </address>
                         </ipv6>
                     </interface>
                 </ies>
                 <vpls>
-                    <service-name>4093</service-name>
+                    <service-name>3095</service-name>
                     <admin-state>enable</admin-state>
-                    <service-id>4093</service-id>
+                    <service-id>3095</service-id>
                     <customer>1</customer>
                     <v-vpls>true</v-vpls>
-                    <vlan>4093</vlan>
+                    <vlan>3095</vlan>
                     <sap>
-                        <sap-id>lag-1:4093</sap-id>
-                        <admin-state>enable</admin-state>
-                    </sap>
-                    <sap>
-                        <sap-id>lag-2:0</sap-id>
+                        <sap-id>1/1/c1/1:3095</sap-id>
                         <admin-state>enable</admin-state>
                     </sap>
                 </vpls>
@@ -183,22 +188,6 @@
                 </management-interface>
                 <call-home>
                 </call-home>
-                <dhcpv4-client>
-                    <intf-name>mgmt_ztp</intf-name>
-                    <service-name>2</service-name>
-                </dhcpv4-client>
-                <dhcpv6-client>
-                    <intf-name>mgmt_ztp</intf-name>
-                    <service-name>2</service-name>
-                </dhcpv6-client>
-                <node-ip>
-                    <ipv4>
-                        <interface-name>mgmt_ztp</interface-name>
-                    </ipv4>
-                    <ipv6>
-                        <interface-name>mgmt_ztp</interface-name>
-                    </ipv6>
-                </node-ip>
                 <security>
                     <pki>
                         <certificate-expiration-warning>
