@@ -10,8 +10,8 @@
           <lag-index>1</lag-index>
           <admin-state>enable</admin-state>
           <lacp>
-            <mode>passive</mode>
-            <administrative-key>30</administrative-key>
+            <mode>active</mode>
+            <administrative-key>1501</administrative-key>
           </lacp>
           <port>
             <port-id>1/1/c1/1</port-id>
