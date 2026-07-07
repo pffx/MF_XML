@@ -18,15 +18,18 @@
             </sap>
           </vpls>
         </service>
-        <lag nc0:operation="delete">
+        <lag>
           <lag-index>1</lag-index>
+          <port nc0:operation="delete">
+            <port-id>1/3/c1/1</port-id>
+          </port>
         </lag>
         <service nc0:operation="merge">
           <vpls>
             <service-name>4093</service-name>
             <service-id>4093</service-id>
             <sap>
-              <sap-id>1/1/c1/1:0</sap-id>
+              <sap-id>lag-1:0</sap-id>
               <admin-state>enable</admin-state>
             </sap>
           </vpls>
