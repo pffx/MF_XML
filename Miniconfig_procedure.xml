@@ -1,11 +1,12 @@
-<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+  xmlns:nc0="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
   <edit-config>
     <target>
       <candidate/>
     </target>
     <config>
       <configure xmlns="urn:nokia.com:sros:ns:yang:sr:conf">
-        <system xmlns:nc0="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <system>
           <dhcpv4-client nc0:operation="delete">
           </dhcpv4-client>
           <dhcpv6-client nc0:operation="delete">
@@ -13,7 +14,7 @@
           <node-ip nc0:operation="delete">
           </node-ip>
         </system>
-        <service xmlns:nc0="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <service>
           <vpls nc0:operation="delete">
             <service-name>4093</service-name>
             <service-id>4093</service-id>
@@ -34,6 +35,13 @@
                 <admin-state>enable</admin-state>
               </sap>
               <ipv6>
+                <link-local-address>
+                  <address>fe80::22</address>
+                </link-local-address>
+                <address>
+                  <ipv6-address>2003::100</ipv6-address>
+                  <prefix-length>64</prefix-length>
+                </address>
               </ipv6>
             </interface>
           </ies>
@@ -50,6 +58,18 @@
             </sap>
           </vpls>
         </service>
+        <router>
+          <router-name>Base</router-name>
+          <static-routes>
+            <route>
+              <ip-prefix>::/0</ip-prefix>
+              <route-type>unicast</route-type>
+              <next-hop>
+                <ip-address>fe80::21%OAM</ip-address>
+              </next-hop>
+            </route>
+          </static-routes>
+        </router>
       </configure>
     </config>
   </edit-config>
