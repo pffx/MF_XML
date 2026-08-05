@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc message-id="getcfg"
+  xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <get-config>
+    <source>
+      <running />
+    </source>
+    <filter type="subtree">
+      <onus xmlns="urn:bbf:params:xml:ns:yang:bbf-fiber-onu-emulated-mount">
+        <onu>
+          <name>LT1_C3_XGSPON_ONT0</name>
+        </onu>
+      </onus>
+
+    </filter>
+  </get-config>
+</rpc>

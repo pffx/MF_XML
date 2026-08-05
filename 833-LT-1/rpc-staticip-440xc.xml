@@ -1,0 +1,41 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <onus xmlns="urn:bbf:params:xml:ns:yang:bbf-fiber-onu-emulated-mount">
+        <onu>
+          <name>LT1_C3_XGSPON_ONT0</name>
+          <template-parameters xmlns="http://www.nokia.com/Fixed-Networks/BBA/yang/onus-from-template">
+            <interfaces>
+              <interface>
+                <template-ref>IPHOST</template-ref>
+                <ipv4 xmlns:ns0="urn:ietf:params:xml:ns:netconf:base:1.0" ns0:operation="replace">
+                  <origin>static</origin>
+                  <address>
+                    <ip>135.251.214.97</ip>
+                    <netmask>255.255.255.0</netmask>
+                  </address>
+                </ipv4>
+              </interface>
+            </interfaces>
+            <system>
+              <server>
+                <name>pridns</name>
+                <address>0.0.0.0</address>
+              </server>
+              <server>
+                <name>backupdns</name>
+                <address>0.0.0.0</address>
+              </server>
+            </system>
+            <routing>
+              <next-hop-address>135.251.214.1</next-hop-address>
+            </routing>
+          </template-parameters>
+        </onu>
+      </onus>
+    </config>
+  </edit-config>
+</rpc>
